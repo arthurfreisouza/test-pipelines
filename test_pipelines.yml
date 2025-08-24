@@ -1,0 +1,19 @@
+trigger: none
+
+stages:
+  - stage: ShowPathAndModules
+    displayName: 'Show Pipeline Path and List Modules'
+    jobs:
+      - job: ShowPath
+        displayName: 'Show Path and List Files'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - script: |
+              echo "Current working directory:"
+              touch a.txt
+              echo "Listing files in current directory:"
+              ls -l
+              echo "Listing files in provision/bicep_files directory:"
+              ls -l a.txt
+            displayName: 'Show Path and List Files'
